@@ -1,0 +1,11 @@
+{
+  "name": "crud-express",
+  "description": "crud-express",
+  "version": "0.0.0",
+  "dependencies": {
+    "body-parser": "1.0.2",
+    "express": "4.1.x",
+    "node-uuid": "^1.4.1"
+
+  }
+}

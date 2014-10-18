@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+  <input><button>add</button>
+  <message></message>
+  <ul></ul>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<script>
+  var list = $("ul")
+    , button = $("button")
+    , field = $("input")
+    , message = $("message");
+
+  function loadAllHumans() {
+    $.getJSON("/humans").done(function(humans) {
+      list.empty()
+      humans.forEach(function(human) {
+        list.append("<li>"+human.id + " - " + human.name +"</li>");
+      });
+    });
+  }
+
+  button.click(function() {
+    $.post("/humans",{name: field.val()}).done(function(data) {
+      console.log(data)
+      message.html(JSON.stringify(data));
+      loadAllHumans();
+    });
+  });
+
+  /*--- first time ---*/
+  loadAllHumans()
+
+</script>
+
+
+</body>
+</html>
